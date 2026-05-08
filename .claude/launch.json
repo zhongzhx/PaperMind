@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "demo-server",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-c", "import os, sys; sys.path.insert(0, 'src'); os.environ['PYTHONPATH'] = 'src'; exec(open('demo_app/server.py').read())"],
+      "port": 8766
+    }
+  ]
+}

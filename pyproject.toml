@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "researchos-learning-engine"
+version = "0.1.0"
+description = "ResearchOS Learning & Memory Consolidation Engine — structured learning, scoring, consolidation, and recommendation for scientific research projects"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "ResearchOS Contributors"}
+]
+dependencies = [
+]
+
+[project.optional-dependencies]
+openai = [
+    "openai>=1.0",
+]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.scripts]
+researchos-learn = "researchos_learning_engine.interfaces.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

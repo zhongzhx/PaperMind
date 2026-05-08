@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaperMind Learning Engine · 演示</title>
+<link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+
+<header>
+  <h1>PaperMind Learning Engine · 演示</h1>
+  <span class="subtitle">高分文章学习与项目记忆巩固</span>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab-btn active" data-tab="paper-learning" role="tab">文章学习</button>
+  <button class="tab-btn" data-tab="sleep-cycle" role="tab">记忆巩固</button>
+</nav>
+
+<main>
+
+<!-- ============================================================
+     TAB 1: 文章学习
+     ============================================================ -->
+<section id="tab-paper-learning" class="tab-content active">
+  <div class="layout two-col">
+    <!-- 输入面板 -->
+    <div class="panel input-panel">
+      <div class="panel-header">
+        <h2>输入</h2>
+      </div>
+
+      <!-- PDF 上传区 -->
+      <div class="upload-area" id="pdf-upload-area">
+        <div class="upload-placeholder" id="upload-placeholder">
+          <div class="upload-icon">&#128196;</div>
+          <div class="upload-text">拖拽 PDF 到此处，或点击选择文件</div>
+          <div class="upload-hint">支持 .pdf 格式</div>
+        </div>
+        <div class="upload-progress" id="upload-progress" style="display:none;">
+          <div class="spinner"></div>
+          <span>正在解析 PDF...</span>
+        </div>
+        <div class="upload-result" id="upload-result" style="display:none;">
+          <span class="upload-filename" id="upload-filename"></span>
+          <span class="upload-filesize" id="upload-filesize"></span>
+          <button id="btn-clear-upload" class="btn-link">清除</button>
+        </div>
+        <input type="file" id="pdf-file-input" accept=".pdf" style="display:none;">
+      </div>
+
+      <div class="editor-label">
+        <span>文章 JSON (<code>HighImpactPaperRecord</code>)</span>
+        <span class="editor-hint" id="pdf-source-hint">或上传 PDF 自动填充</span>
+      </div>
+      <textarea id="paper-json-editor" class="json-editor" spellcheck="false" placeholder='{ "paper_id": "...", "title": "...", "full_text": "...", ... }'></textarea>
+
+      <div class="project-context-row">
+        <div class="context-field">
+          <label>项目 ID</label>
+          <input type="text" id="paper-project-id" value="" placeholder="my_project">
+        </div>
+        <div class="context-field stretch">
+          <label>项目描述</label>
+          <input type="text" id="paper-project-desc" value="" placeholder="可选项目描述">
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button id="btn-learn-paper" class="btn-primary">学习文章</button>
+        <span id="paper-status" class="status-msg"></span>
+      </div>
+    </div>
+
+    <!-- 输出面板 -->
+    <div class="panel output-panel">
+      <div class="panel-header">
+        <h2>结果</h2>
+        <div class="toolbar">
+          <button id="btn-export-paper" class="btn-secondary" disabled>导出 JSON</button>
+        </div>
+      </div>
+      <div id="paper-results" class="results-area">
+        <div class="placeholder">点击「学习文章」查看结果</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TAB 2: 记忆巩固
+     ============================================================ -->
+<section id="tab-sleep-cycle" class="tab-content">
+  <div class="layout two-col">
+    <!-- 输入面板 -->
+    <div class="panel input-panel">
+      <div class="panel-header">
+        <h2>输入</h2>
+      </div>
+
+      <div class="editor-label">
+        <span>巩固 JSON (<code>ConsolidationInput</code>)</span>
+      </div>
+      <textarea id="sleep-json-editor" class="json-editor" spellcheck="false" placeholder='{ "project_id": "...", "memory_records": [...], ... }'></textarea>
+
+      <div class="action-row">
+        <button id="btn-run-sleep" class="btn-primary">运行巩固</button>
+        <span id="sleep-status" class="status-msg"></span>
+      </div>
+    </div>
+
+    <!-- 输出面板 -->
+    <div class="panel output-panel">
+      <div class="panel-header">
+        <h2>结果</h2>
+        <div class="toolbar">
+          <button id="btn-export-sleep" class="btn-secondary" disabled>导出 JSON</button>
+        </div>
+      </div>
+      <div id="sleep-results" class="results-area">
+        <div class="placeholder">点击「运行巩固」查看结果</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="static/app.js"></script>
+</body>
+</html>
