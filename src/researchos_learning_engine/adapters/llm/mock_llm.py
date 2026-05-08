@@ -99,6 +99,148 @@ class MockLLMAdapter:
                 "using established methodologies."
             )
 
+        # --- General Methods KB — Deep/extraction method extraction ---
+
+        if "deep method extraction" in sp_lower:
+            return json.dumps(
+                {
+                    "high_impact_value_cn": "该论文提出了关键的实验方法学创新，显著提高了检测灵敏度和可重复性，对同类研究具有重要参考价值",
+                    "what_researchos_should_learn_cn": "实验流程中的关键参数控制方法、质控点设置、数据分析流程和统计设计思路，可沉淀为SOP模板",
+                    "applicable_scenarios_cn": "适用于需要高灵敏度蛋白检测的实验场景，以及需要建立标准化操作流程的研究项目",
+                    "core_protocol_steps": [
+                        "样品制备与标准化处理",
+                        "关键试剂的配制与质控",
+                        "实验参数的优化与确定",
+                        "数据采集与质量控制",
+                        "数据分析与结果验证",
+                    ],
+                    "critical_parameters": [
+                        "孵育温度与时间",
+                        "抗体稀释比例",
+                        "洗涤条件与次数",
+                        "检测系统灵敏度设置",
+                    ],
+                    "quality_control_points": [
+                        "阳性对照与阴性对照的设立",
+                        "重复样品的变异性控制",
+                        "标准曲线的线性范围验证",
+                        "批间差异的监测方法",
+                    ],
+                    "reproducibility_points": [
+                        "详细记录所有实验参数",
+                        "使用内部参考标准进行归一化",
+                        "独立重复实验的样本量要求",
+                    ],
+                    "common_pitfalls": [
+                        "抗体非特异性结合",
+                        "样品降解导致信号减弱",
+                        "背景信号过高影响信噪比",
+                    ],
+                    "troubleshooting_hints": [
+                        "如背景过高，可增加洗涤次数或提高封闭液浓度",
+                        "如信号过弱，可优化抗体浓度或延长孵育时间",
+                    ],
+                    "data_outputs": [
+                        "原始信号值及背景校正数据",
+                        "标准曲线及回归参数",
+                        "归一化后的相对定量结果",
+                    ],
+                    "analysis_workflow": "数据采集→背景校正→归一化→统计分析→结果可视化",
+                    "statistical_design": "采用三独立重复实验，数据以mean±SD表示，组间比较使用t检验或单因素方差分析",
+                    "figure_logic_patterns": [
+                        "图1展示方法原理及实验流程",
+                        "图2展示方法的灵敏度与特异性验证结果",
+                        "图3展示与传统方法的比较分析",
+                    ],
+                    "reporting_checklist": [
+                        "实验材料来源与批号",
+                        "仪器型号与软件版本",
+                        "详细操作步骤及时间参数",
+                        "质控数据及验收标准",
+                    ],
+                    "reusable_research_patterns": [
+                        "剂量反应实验设计模板",
+                        "多参数优化实验设计思路",
+                        "方法验证的标准化流程",
+                    ],
+                    "operation_reference_points": [
+                        "实验操作的关键时间节点",
+                        "需要记录的环境条件",
+                        "仪器校准和维护周期",
+                    ],
+                    "researchos_trigger_questions": [
+                        "如何提高蛋白检测的灵敏度？",
+                        "Western blot实验的标准化操作流程是什么？",
+                        "如何设置正确的实验对照？",
+                    ],
+                    "related_methods": ["Western blot", "ELISA", "免疫组化"],
+                    "limitations": [
+                        "仅适用于特定样品类型",
+                        "检测下限受抗体质量影响",
+                    ],
+                }
+            )
+
+        if "standard method extraction" in sp_lower:
+            return json.dumps(
+                {
+                    "high_impact_value_cn": "该论文提供了经典的方法学框架，对理解技术原理和基础实验设计有参考价值",
+                    "what_researchos_should_learn_cn": "掌握该方法的基本原理、适用范围和关键实验设计要素",
+                    "applicable_scenarios_cn": "适合作为方法学背景知识，用于实验设计初期的参考",
+                    "core_protocol_steps": [
+                        "实验前准备与试剂配制",
+                        "标准操作流程执行",
+                        "数据采集与初步分析",
+                    ],
+                    "limitations": [
+                        "技术更新较快，部分参数可能已优化",
+                    ],
+                }
+            )
+
+        if "evidence extraction" in sp_lower:
+            return json.dumps(
+                {
+                    "evidence_items": [
+                        {
+                            "claim": "该方法检测灵敏度达到皮摩尔级别",
+                            "short_quote": "detection limit of 1 pmol was achieved",
+                            "section": "results",
+                            "evidence_type": "parameter",
+                            "confidence": 0.9,
+                        },
+                        {
+                            "claim": "实验需要设立阳性和阴性对照",
+                            "short_quote": "positive and negative controls were included",
+                            "section": "methods",
+                            "evidence_type": "quality_control",
+                            "confidence": 0.95,
+                        },
+                        {
+                            "claim": "数据分析使用GraphPad Prism进行统计检验",
+                            "short_quote": "statistical analysis was performed using GraphPad Prism",
+                            "section": "methods",
+                            "evidence_type": "data_analysis",
+                            "confidence": 0.85,
+                        },
+                        {
+                            "claim": "每次实验至少进行三次独立重复",
+                            "short_quote": "all experiments were repeated at least three times",
+                            "section": "methods",
+                            "evidence_type": "experimental_design",
+                            "confidence": 0.9,
+                        },
+                        {
+                            "claim": "孵育时间对实验结果有显著影响",
+                            "short_quote": "incubation time significantly affected the signal intensity",
+                            "section": "results",
+                            "evidence_type": "parameter",
+                            "confidence": 0.8,
+                        },
+                    ]
+                }
+            )
+
         # --- Paper Learning Library extractors ---
 
         # Experiment design extraction
